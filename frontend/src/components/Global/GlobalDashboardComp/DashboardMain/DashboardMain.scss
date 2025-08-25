@@ -1,0 +1,69 @@
+.dashboard-main-container {
+    padding: 0rem;
+    background-color: #f9fafb;
+  }
+  
+  .home-dashboard-grid {
+    display: grid;
+    // Define 3 columns with flexible widths
+    grid-template-columns: 1fr 1.5fr 1fr;
+    // Define 4 rows that size automatically based on their content
+    grid-template-rows: auto auto auto auto;
+    gap: 1.5rem;
+  }
+  .dashboard-column {
+    display: flex;
+    flex-direction: column;
+    // This line was added to create vertical space between the cards in each column
+    gap: 1.5rem; 
+  }
+  
+  // A generic style for all the placeholder cards
+  .widget-card {
+      background-color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid #e5e7eb;
+      height: 100%;
+      box-sizing: border-box;
+  }
+  
+  // --- Explicit Grid Placement ---
+  // Using grid-area: row-start / column-start / row-end / column-end;
+  
+  // Column 1
+
+  .grid-item-datetime {
+    grid-area: 1 / 1;
+  }
+  .grid-item-holiday {
+    grid-area: 2 / 1;
+  }
+  .grid-item-quicklinks {
+    grid-area: 3 / 1;
+  }
+  .grid-item-loginsummary {
+    grid-area: 4 / 1;
+  }
+  
+  // Column 2 (The main content column)
+  .grid-item-postcreator {
+    grid-area: 1 / 2;
+  }
+  .grid-item-yourposts {
+    // This is the key change: make this item span from row 2 to the start of row 5
+    grid-area: 2 / 2 / 5 / 3;
+  }
+  
+  // Column 3
+  .grid-item-todolist {
+    grid-area: 1 / 3;
+  }
+  .grid-item-incubationstatus {
+    grid-area: 2 / 3;
+  }
+  .grid-item-calendar {
+    grid-area: 3 / 3;
+  }
+
+  

@@ -1,0 +1,65 @@
+.incubation-status-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .incubation-status-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 1.5rem 0;
+    text-align: left;
+  }
+  
+  .status-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  
+    .status-count {
+      font-size: 4rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+  
+    .status-label {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  
+    &.active {
+      .status-count, .status-label {
+        color: #16a34a; // Green color
+      }
+    }
+  
+    &.inactive {
+      .status-count, .status-label {
+        color: #dc2626; // Red color
+      }
+    }
+  }
+  
+  .status-divider {
+    width: 1px;
+    background-color: #d1d5db;
+    align-self: stretch;
+    height: auto;
+    min-height: 80px;
+  }
+  

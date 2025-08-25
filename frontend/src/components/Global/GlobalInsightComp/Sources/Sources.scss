@@ -1,0 +1,92 @@
+.donut-chart-container {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 24px;
+    background: #fff;
+    border-radius: 14px;
+    
+    height: 355px;
+    
+    width: 60%;
+    box-shadow: 0 2px 8px rgba(30,30,47,0.06);
+    gap: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .sources-heading {
+      margin-top: -10px;
+      margin-left: -10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e1e2f;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  
+  .donut-chart-main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 36px;
+    width: 100%;
+  }
+  
+  .donut-chart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    max-width: 320px;
+    flex: 1 1 320px;
+    canvas {
+      width: 260px !important;
+      height: 260px !important;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  
+  .donut-chart-legend {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1 1 200px;
+  }
+  
+  .source-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+  }
+  
+  .source-list li {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #444;
+    font-weight: 400;
+    gap: 10px;
+  }
+  
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1.5px solid #e5e7eb;
+    display: inline-block;
+  }
+  
+  .source-list strong {
+    margin-left: 8px;
+    color: #111827;
+    font-weight: 600;
+    font-size: 13px;
+  }

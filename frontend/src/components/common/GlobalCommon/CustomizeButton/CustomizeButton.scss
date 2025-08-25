@@ -1,0 +1,31 @@
+.customize-btn {
+  border: none;
+  border-radius: 0.5em;
+  font-size: 0.9rem; // or try 14px
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 500;
+  padding: 0 0.8rem;
+  margin-left: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  letter-spacing: 0.1px;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.customize-btn-bkg {
+  background: #19c37d;
+  color: white;
+  border: 1px solid #0E986A;
+}
+.customize-btn:hover {
+  background: #16a06a;
+  box-shadow: 0 2px 8px rgba(25, 195, 125, 0.15);
+}

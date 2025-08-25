@@ -1,0 +1,62 @@
+.sales-curm-container {
+  width: 280px;
+  height: 110px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(30,30,47,0.06);
+  padding: 14px 16px 10px 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sales-curm-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sales-curm-title {
+  font-size: 16px;
+  margin-top: -7px;
+  margin-left: -5px;
+  font-weight: 500;
+  color: #1e1e2f;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sales-curm-subheading {
+  font-size: 10px;
+  color: #888;
+  font-weight: 100;
+  margin-top: 0px;
+  margin-bottom: -12px;
+  margin-left: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sales-curm-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin-top:-10px ;
+  font-size: 26px;
+  font-weight: 400;
+  color: #10B981; // green color for amount
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}
+//   flex: 1;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: 22px;
+//   font-weight: 500;
+//   color: #22c55e; // green color for amount
+//   letter-spacing: 1px;
+//   font-family: 'Poppins', sans-serif;
+// }

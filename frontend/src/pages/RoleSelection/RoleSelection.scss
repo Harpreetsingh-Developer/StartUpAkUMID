@@ -1,0 +1,105 @@
+.role-selection-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg,#FFFFFF  -50%, #93B2FF 100%);
+    
+    
+    .role-selection-main {
+      opacity: 0.9;
+      width: 1050px;
+      height: 500px;
+      background: linear-gradient(180deg, #5970E5 0%, #1D2859 90%);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Move h1 to the top */
+      justify-content: flex-start;
+      position: relative;
+      padding-top: 1.5rem;
+      
+      
+      .role-selection-h1 {
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight:500;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        text-shadow: 0 4px 16px rgba(25, 40, 89, 0.18);
+        letter-spacing: 1px;
+        font-family: Poppins;
+        /* Ensure h1 stays at the top */
+        align-self: stretch;
+      }
+  
+      .role-selection-h2 {
+          // position: absolute;
+          margin-top: 30px;
+          color: #ffffff;
+          font-size: 1.5rem;
+          font-weight:bold;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          text-shadow: 0 4px 16px rgba(25, 40, 89, 0.18);
+          letter-spacing: 1px;
+          font-family: Poppins;
+          /* Ensure h1 stays at the top */
+          // align-self: stretch;
+        }
+    }
+  }
+  
+  
+  
+  
+  .role-selection-buttons {
+    
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr);
+        text-align: right; 
+        display: flex;
+        gap: 1.5rem;
+        position: relative;
+        top: 0%;
+    
+  }
+  
+  .role-selection-buttons button {
+    background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);
+    color: #620f88;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(160, 140, 209, 0.15);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+  
+  
+  .role-selection-buttons button:hover {
+    background: linear-gradient(90deg, #fbc2eb 0%, #a18cd1 100%);
+    color: #4b006e;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 15px rgba(160, 140, 209, 2);
+  }
+  .role-selection-buttons{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 40%;
+  
+      
+    }
+  .role-selection-buttons button {
+    width: 220px;
+    height: 120px;
+    
+  }
+  

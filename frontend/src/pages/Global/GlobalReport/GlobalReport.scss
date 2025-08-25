@@ -1,0 +1,17 @@
+.report-content-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #f7f9fb;
+  overflow-y: auto;
+  padding: 0.8rem;
+  gap: 0.8rem;
+  box-sizing: border-box;
+}
+
+.report-placeholder {
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+} 

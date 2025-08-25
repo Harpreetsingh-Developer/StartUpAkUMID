@@ -1,0 +1,16 @@
+.insights-content-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: #f7f9fb;
+    overflow-y: auto;
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem; /* Move padding here */
+    gap: 0.8rem; /* Space between dashboard components */
+     box-sizing: border-box;
+  }
+  .sales-row {
+    display: flex;
+    gap: 20px; // Optional: adds spacing between the components
+    flex-wrap: wrap; // Optional: wraps on smaller screens
+  }

@@ -1,0 +1,48 @@
+.overview-container {
+  padding: 1.5rem;
+}
+
+.overview-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.overview-dashboard-grid {
+  display: grid;
+  // Define a 3-column layout
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  
+  // Define the areas for our grid items
+  grid-template-areas:
+    "manager  stats1   stats2"
+    "startups details1 details2";
+
+    // Make the second row taller
+    grid-template-rows: auto 1fr;
+}
+
+// Assign each component to its named area in the grid
+.grid-item-manager { 
+    grid-area: manager; 
+}
+.grid-item-stats1 { 
+    grid-area: stats1; 
+}
+.grid-item-stats2 { 
+    grid-area: stats2; 
+}
+.grid-item-startups { 
+    grid-area: startups; 
+}
+.grid-item-details1 { 
+    grid-area: details1; 
+}
+.grid-item-details2 { 
+    grid-area: details2; 
+}
+

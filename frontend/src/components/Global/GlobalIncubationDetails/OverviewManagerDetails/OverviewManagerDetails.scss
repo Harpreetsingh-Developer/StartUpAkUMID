@@ -1,0 +1,58 @@
+.manager-details-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    gap: 2rem;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border:2px solid #B3B3B3;
+    width:100%;
+    height:100%;
+    border-radius: 17px;
+  
+    .manager-image-section {
+      text-align: center;
+  
+      h3 {
+        font-weight: 300;
+        font-size:20px;
+        margin: 0;
+        margin-bottom: 0.5rem;
+      }
+  
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+  
+    .manager-info-section {
+      h2 {
+        font-size: 24;
+        font-weight: 500;
+        text-align: center;
+        margin:0;
+      }
+  
+      h4 {
+        font-size: 18px;
+        font-weight: 100;
+        margin: 0;
+        width: max-content;
+        
+      }
+  
+      .manager-info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #555;
+        font-size: 16px;
+        margin: 0.2rem 0;
+      }
+      
+    }
+  }
+  

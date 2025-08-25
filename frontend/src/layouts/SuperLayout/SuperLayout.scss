@@ -1,0 +1,62 @@
+/* Reset and base styles */
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: var(--font-family);
+    font-weight: normal;
+    font-stretch: normal;
+    transform: none;
+  }
+  
+  /* Main app container, vertical flex */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Fixed header: announcement + header combined */
+  .header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 11vh; /* total height of announcement + header */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Body container below header */
+  .body-container {
+    margin-top: 11vh;
+    height: calc(100vh - 11vh);
+    display: flex;
+    overflow: hidden;
+  }
+  
+  /* Fixed sidebar */
+  .side-navbar {
+    width: 105px;
+    min-width: 90px;
+    position: fixed;
+    top: 11vh;
+    left: 0;
+    height: calc(100vh - 11vh);
+    overflow-y: auto;
+    z-index: 900;
+  }
+  
+  /* Scrollable main content, leaves space for sidebar */
+  .main-content {
+    margin-left: 105px;
+    flex: 1;
+    padding: inherit;
+    height: 100%;
+    overflow-y: auto;
+  }
+  

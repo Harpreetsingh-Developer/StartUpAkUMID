@@ -1,0 +1,154 @@
+.admin-login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #93b2ff 100%);
+}
+
+.admin-login-box {
+  background: linear-gradient(0deg, rgba(41, 63, 169, 1) 0%, rgba(215, 82, 255, 1) 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  padding: 2.5rem;
+  width: 450px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.95;
+}
+
+.admin-login-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 100;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: Poppins, Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.admin-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.admin-login-input {
+  height: 45px;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 40px;
+  border: none;
+  font-size: 1rem;
+  background: #f3f6fa;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(160, 140, 209, 0.08);
+  transition: box-shadow 0.2s;
+}
+
+.admin-login-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #5970e5;
+}
+
+.admin-login-button {
+  align-self: center;
+  background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);
+  color: #620f88;
+  border: none;
+  border-radius: 40px;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(160, 140, 209, 0.15);
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  margin-top: 1rem;
+  width: 150px;
+}
+
+.admin-login-button:hover {
+  background: linear-gradient(90deg, #fbc2eb 0%, #a18cd1 100%);
+  color: #4b006e;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow:
+    0 0 16px 4px #a18cd1,
+    0 8px 15px rgba(160, 140, 209, 0.18);
+}
+
+.forgot-password-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.forgot-password {
+  color: #fff;
+  font-size: 0.98rem;
+  text-align: right;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.forgot-password:hover {
+  color: #fbc2eb;
+}
+
+.error-message {
+  color: #ff3b3b;
+  background: #fff0f0;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.success-message {
+  color: #1a7f37;
+  background: #e6fff2;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.mock-credentials {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  font-size: 0.98rem;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(31, 38, 135, 0.08);
+}
+
+.mock-credentials-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.mock-credentials-row {
+  margin-bottom: 0.3rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mock-credentials-value {
+  font-family: monospace;
+  background: #fff;
+  color: #1d2859;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.98rem;
+}

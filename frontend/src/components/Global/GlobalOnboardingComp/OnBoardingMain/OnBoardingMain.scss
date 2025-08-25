@@ -1,0 +1,106 @@
+.onboarding-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f7f9fb;
+    padding: 0.8rem 0.8rem;
+    gap: 4rem;
+    box-sizing: border-box;
+  
+    .step-container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      flex-grow: 1;
+      transition: all 0.3s ease;
+    }
+  
+    .step-navigation {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 10px;
+  
+      button {
+        padding: 0.75rem 1.5rem;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+  
+        &:hover:not(:disabled) {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  
+    .submit-button {
+      padding: 0.75rem 2rem;
+      background-color: #28a745;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  
+    .popup-content {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  
+      h2 {
+        margin-bottom: 1.5rem;
+      }
+  
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  

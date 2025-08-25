@@ -1,0 +1,95 @@
+.doc-overdue-container {
+  width: 280px;
+  height: 110px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(30,30,47,0.06);
+  padding: 14px 16px 10px 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.doc-overdue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: 'Poppins', sans-serif;
+}
+
+.doc-overdue-title {
+  font-size: 16px;
+  margin-top: -7px;
+  margin-left: -5px;
+  font-weight: 500;
+  color: #1e1e2f;
+  font-family: 'Poppins', sans-serif;
+}
+
+.doc-overdue-filter {
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 6px 12px;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-block;
+}
+
+.doc-overdue-filter label {
+  position: relative;
+  display: inline-block;
+  font-size: 11px;
+  background: none;
+  border: none;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.doc-overdue-filter select {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.doc-overdue-subheading {
+  font-size: 14px;
+  position: absolute;
+  top: 32%;
+ 
+  color: #888;
+  // font-weight: regular;
+  margin-top: 0px;
+  margin-bottom: -12px;
+  margin-left: 5px;
+//   letter-spacing: 0.2px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.doc-overdue-amount {
+  position: absolute;
+  right: 60px;
+  bottom: 20px;
+  font-size: 25px;
+  font-weight: 200;
+  color: #EF4444;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}

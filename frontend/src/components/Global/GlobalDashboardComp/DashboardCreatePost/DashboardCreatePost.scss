@@ -1,0 +1,193 @@
+.create-post-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .create-post-tabs {
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  
+    .tab-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+  
+      &.active {
+        color: #2563eb;
+        border-bottom: 2px solid #2563eb;
+      }
+  
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  
+  .create-post-body {
+    .post-textarea {
+      width: 100%;
+      border: none;
+      resize: none;
+      font-size: 1rem;
+      color: #6b7280;
+      min-height: 80px;
+      font-family: inherit;
+  
+      &::placeholder {
+        color: #9ca3af;
+      }
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  
+    .image-preview-container {
+      position: relative;
+      margin-top: 1rem;
+      
+      .image-preview {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+  
+      .remove-image-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+    }
+  
+    .poll-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+  
+      .poll-question-input,
+      .poll-option-input {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        font-family: inherit;
+  
+        &::placeholder {
+          color: #9ca3af;
+        }
+        &:focus {
+          outline: none;
+          border-color: #2563eb;
+        }
+      }
+  
+      .add-option-btn {
+        background: none;
+        border: none;
+        color: #2563eb;
+        font-weight: 600;
+        cursor: pointer;
+        align-self: flex-start;
+        margin-top: 0.5rem;
+        padding: 0.25rem;
+      }
+    }
+  }
+  
+  .create-post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .footer-actions-left {
+    display: flex;
+    gap: 0.75rem;
+  
+    .action-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: #ffffff;
+      padding: 0;
+  
+      &.mention {
+        background-color: #3b82f6;
+      }
+      &.media {
+        background-color: #ef4444;
+      }
+      &.emoji {
+        background-color: #facc15;
+      }
+      
+      img {
+          width: 20px;
+          height: 20px;
+      }
+    }
+  }
+  
+  .footer-actions-right {
+    display: flex;
+    gap: 1rem;
+  
+    .action-btn {
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+  
+      &.cancel {
+        background-color: #ef4444;
+        color: #ffffff;
+      }
+  
+      &.post {
+        background-color: #3b82f6;
+        color: #ffffff;
+      }
+    }
+  }
+  

@@ -1,0 +1,44 @@
+.onboarding-header {
+    width: 100%;
+    background: #e3e0e0;
+    border-bottom: 3px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    box-shadow: 2px 2px 20px rgba(0,0,0,0.06);
+    padding-top: 8px;
+  }
+  
+  
+  .onboarding-header h2 {
+    font-size: 22px;
+    font-weight: 300;
+    color: #222;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Poppins', Arial, sans-serif;
+  }
+  
+  
+  // Responsive design
+  @media (max-width: 768px) {
+    .onboarding-header {
+      height: 52px;
+    }
+    .onboarding-header h2 {
+      font-size: 22px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .onboarding-header {
+      height: 44px;
+    }
+    .onboarding-header h2 {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+  }

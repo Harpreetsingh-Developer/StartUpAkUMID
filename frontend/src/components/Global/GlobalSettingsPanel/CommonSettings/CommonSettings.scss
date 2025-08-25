@@ -1,0 +1,210 @@
+.common-settings-layout {
+  display: flex;
+  height: 100vh;
+  background: var(--background-color);
+  overflow: hidden; // Prevent double scrollbars
+}
+
+.settings-navbar {
+  width: 280px;
+  background: var(--card-background);
+  border-right: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.settings-navbar__list {
+  padding: 0;
+}
+
+.settings-category {
+  margin-bottom: 0;
+}
+
+.settings-category__header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px 12px 20px;
+  font-weight: var(--font-weight-semibold);
+  font-size: 14px;
+  color: var(--primary-color);
+  background: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  margin: 0;
+}
+
+.settings-category__icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.settings-category__label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
+.settings-category__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--card-background);
+}
+
+.settings-category__item {
+  margin: 0;
+}
+
+.settings-category__button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px 12px 32px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  position: relative;
+  border-left: 3px solid transparent;
+  font-family: var(--font-family);
+}
+
+.settings-category__button:hover {
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--primary-color);
+}
+
+.settings-category__button.active {
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--primary-color);
+  border-left: 3px solid var(--primary-color);
+}
+
+.settings-category__arrow {
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  object-fit: contain;
+  transition: all 0.2s ease;
+}
+
+.settings-category__arrow.active {
+  /* Filter removed since we're using different icons for active/inactive states */
+}
+
+.settings-category__text {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+  color: inherit;
+  font-weight: var(--font-weight-normal);
+}
+
+.settings-category__text.active {
+  color: var(--primary-color);
+  font-weight: var(--font-weight-medium);
+}
+
+.settings-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden; // Prevent double scrollbars
+}
+
+.settings-header {
+  background: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  padding: 24px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.settings-header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+}
+
+.settings-header__info {
+  flex: 1;
+}
+
+.settings-header__title {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+  font-family: var(--font-family);
+}
+
+.settings-header__tagline {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  font-family: var(--font-family);
+}
+
+.settings-header__search {
+  position: relative;
+  min-width: 300px;
+}
+
+.settings-header__search-input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--card-background);
+  transition: border-color 0.2s ease;
+  font-family: var(--font-family);
+}
+
+.settings-header__search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.settings-header__search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.settings-header__search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.settings-content {
+  padding: 32px;
+  overflow-y: auto;
+  flex: 1;
+  height: calc(100vh - 200px); // Adjust height to prevent overflow
+}

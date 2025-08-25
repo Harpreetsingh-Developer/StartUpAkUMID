@@ -1,0 +1,155 @@
+.incubation-card {
+  border: 1px solid #ddd;
+  border-radius: 11.28px; // 12px * 0.94
+  padding: 15.04px; // 16px * 0.94
+  width: 100%; // Changed width to 100% for better grid responsiveness
+  max-width: 430px; /* Added a max-width for grid items to prevent them from becoming too wide */
+ 
+  background-color: white;
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 1.175rem; // 1.25rem * 0.94
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .status-dot {
+      width: 13.16px; // 14px * 0.94
+      height: 13.16px; // 14px * 0.94
+      border-radius: 50%;
+    }
+  }
+
+  .card-subheading {
+    margin: 7.52px 0; // 8px * 0.94
+    color: #888;
+    font-weight: 600;
+    display: flex;
+    gap: 5.64px; // 6px * 0.94
+    align-items: center;
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 28.2px; // 30px * 0.94
+    margin: 11.28px 0; // 12px * 0.94
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 5.64px; // 6px * 0.94
+      font-weight: 500;
+
+      .check-icon {
+        color: #93d9a1;
+      }
+
+      .calendar-icon {
+        color: #e74c3c;
+      }
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 11.28px 0; // 12px * 0.94
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left,
+    .center,
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 5.64px; // 6px * 0.94
+    }
+
+    .count {
+      font-weight: bold;
+      color: #666;
+    }
+
+    .label {
+      font-weight: 500;
+      color: #666;
+    }
+
+    .online-dot {
+      width: 9.4px; // 10px * 0.94
+      height: 9.4px; // 10px * 0.94
+      border-radius: 50%;
+      display: inline-block;
+
+      &.green {
+        background-color: #28a745;
+      }
+
+      &.gray {
+        background-color: #6c757d;
+      }
+    }
+  }
+}
+
+// Styles for list view card structure
+.incubation-card.list-card {
+  display: flex;
+  flex-direction: row; // Arrange items horizontally
+  align-items: center;
+  justify-content: space-between;
+  padding: 15.04px 25px; // Adjust padding for a list look
+  width: 100%; // Ensure it takes full width of its container
+  max-width: none; // Remove max-width constraint for full width
+
+  .card-header {
+    flex: 2; // Give more space to header
+    margin-right: 20px;
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .card-subheading {
+    display: none; // Hide subheading in list view for a cleaner look
+  }
+
+  .card-row {
+    display: none; // Hide card-row details in list view for a cleaner look
+  }
+
+  hr {
+    display: none; // Hide separator
+  }
+
+  .card-footer {
+    flex: 1; // Take less space
+    justify-content: flex-end; // Align footer content to the right
+    gap: 20px; // Space out footer items
+  }
+}
+.card-link-wrapper {
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  h2, span, a {
+    text-decoration: none;
+    color: inherit;
+  }
+}

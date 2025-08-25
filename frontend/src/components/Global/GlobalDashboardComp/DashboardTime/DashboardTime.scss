@@ -1,0 +1,49 @@
+.datetime-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e5e7eb;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .time-container {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  
+  .time-main {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #111827;
+    line-height: 1;
+  }
+  
+  .time-ampm {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    text-transform: uppercase;
+  }
+  
+  .date-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 600;
+    color: #111827;
+    text-transform: uppercase;
+    gap: 0.25rem;
+  }
+  
+  .date-day-month,
+  .date-weekday,
+  .date-year {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  

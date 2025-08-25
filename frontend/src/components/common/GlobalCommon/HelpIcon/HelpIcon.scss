@@ -1,0 +1,20 @@
+.header-help-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #44B1FF;
+  color: #44B1FF;
+  border-radius: 50%;
+  width: 3.5vh;
+  height: 3.5vh;
+  font-size: 2.5vh;
+  font-weight: 500;
+  margin-left: 0.3rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.header-help-icon:hover {
+  background: #3b82f6;
+  color: #fff;
+} 

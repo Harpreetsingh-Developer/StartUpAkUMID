@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./poppins.bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./poppins.bold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./poppins.bold.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./poppins.bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* CSS Variables for theming */
+:root {
+  /* Default Colors */
+  --primary-color: rgba(14, 165, 233, 0.75);
+  --secondary-color: #403F64;
+  
+  /* Default Font */
+  --font-family: 'Poppins', sans-serif;
+  
+  /* Additional theme colors */
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* Apply Poppins font globally */
+* {
+  font-family: var(--font-family);
+}
+  
+  

@@ -1,0 +1,250 @@
+.profile-management-container {
+  background: #f7f9fb;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .profile-form {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 800px;
+
+    .profile-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1f2937;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-content {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+
+      .logo-section {
+        flex-shrink: 0;
+
+        .logo-placeholder {
+          width: 120px;
+          height: 120px;
+          background: #374151;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          font-weight: 600;
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background: #4b5563;
+          }
+        }
+      }
+
+      .form-fields {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .form-group {
+          .field-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+
+            .field-label {
+              font-size: 0.875rem;
+              font-weight: 600;
+              color: #374151;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            }
+
+            .edit-icon {
+              font-size: 1rem;
+              color: #3b82f6;
+              cursor: pointer;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: #2563eb;
+              }
+            }
+          }
+
+          .form-input,
+          .form-textarea,
+          .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: #1f2937;
+            background: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+            &:focus {
+              outline: none;
+              border-color: #3b82f6;
+              box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            }
+
+            &::placeholder {
+              color: #9ca3af;
+            }
+          }
+
+          .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+          }
+
+          .select-container {
+            position: relative;
+
+            .form-select {
+              appearance: none;
+              padding-right: 2.5rem;
+            }
+
+            .dropdown-icon {
+              position: absolute;
+              right: 0.75rem;
+              top: 50%;
+              transform: translateY(-50%);
+              color: #6b7280;
+              pointer-events: none;
+              font-size: 0.75rem;
+            }
+          }
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+
+          .form-group:last-child {
+            .select-container {
+              .form-select {
+                padding-right: 2.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+
+      .save-button {
+        background: #3b82f6;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.75rem 2rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+          background: #2563eb;
+          transform: translateY(-1px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .profile-management-container {
+    padding: 1rem;
+
+    .profile-form {
+      padding: 1.5rem;
+
+      .form-content {
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .logo-section {
+          align-self: center;
+
+          .logo-placeholder {
+            width: 100px;
+            height: 100px;
+          }
+        }
+
+        .form-fields {
+          .form-row {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-management-container {
+    .profile-form {
+      padding: 1rem;
+
+      .profile-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-content {
+        .form-fields {
+          gap: 1rem;
+
+          .form-group {
+            .field-header {
+              .field-label {
+                font-size: 0.75rem;
+              }
+            }
+
+            .form-input,
+            .form-textarea,
+            .form-select {
+              padding: 0.625rem;
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+
+      .form-actions {
+        .save-button {
+          width: 100%;
+          padding: 0.875rem;
+        }
+      }
+    }
+  }
+} 

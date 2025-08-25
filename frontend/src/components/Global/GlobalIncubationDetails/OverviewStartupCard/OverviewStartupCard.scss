@@ -1,0 +1,77 @@
+// Card styling
+.startup-card {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #b3b3b3; // Added a border to match the desired output
+  
+    &-header {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    &-title {
+      font-size: 1.5rem; // 24px
+      font-weight: 700;
+      color: #1f2937;
+    }
+  
+    &-view-all {
+      font-size: 0.875rem; // 14px
+      font-weight: 500;
+      color: #2563eb;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+  
+      &:hover {
+        color: #1d4ed8;
+      }
+    }
+  }
+  
+  // Table styling
+  .startup-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .startup-table {
+    min-width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  
+    &-head {
+      border-bottom: 1px solid #e5e7eb;
+    }
+  
+    &-header-cell {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.75rem; // 12px
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  
+    &-row {
+      border-bottom: 1px solid #e5e7eb;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  
+    &-cell {
+      padding: 1rem 1.5rem;
+      font-size: 0.875rem; // 14px
+      color: #4b5563;
+  
+      &:first-child {
+        font-weight: 500;
+        color: #1f2937;
+      }
+    }
+  }
+  

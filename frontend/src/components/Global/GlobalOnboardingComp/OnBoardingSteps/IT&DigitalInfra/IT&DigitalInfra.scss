@@ -1,0 +1,67 @@
+.it-digital-infra-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  hr {
+    height: 2.5px;
+    background-color: #000;
+    border: none;
+    margin-bottom: 2rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      input,
+      select {
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+        background-color: #f5f5f5;
+        width: 100%;
+
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+          background-color: #fff;
+        }
+      }
+
+      select {
+        appearance: none;
+        background: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 8L13 1' stroke='%23999' stroke-width='2'/%3E%3C/svg%3E")
+          no-repeat right 12px center;
+        background-size: 12px;
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
