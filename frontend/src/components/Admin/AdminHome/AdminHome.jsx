@@ -15,9 +15,7 @@ const AdminHome = () => {
     { key: "profile", label: "Profile"},
     { key: "calendar", label: "Calendar"},
     { key: "updates", label: "Updates"},
-    { key: "aboutus", label: "About Us"},
-    
-    
+    { key: "aboutus", label: "About Us"}
   ];
 
   const renderSectionContent = () => {

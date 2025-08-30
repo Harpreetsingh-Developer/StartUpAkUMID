@@ -1,9 +1,3 @@
-// import React from "react";
-// import Announcement from "../../components/common/GlobalCommon/Annoucement/Announcement";;
-// import Header from "../../components/common/GlobalCommon/Header/Header";
-// import SideNavbar from "../../components/common/GlobalCommon/SideNavbar/SideNavbar";
-// import './GlobalLayout.scss';
-
 import React from "react";
 import Announcement from "../../components/common/GlobalCommon/Annoucement/Announcement";
 import Header from "../../components/common/GlobalCommon/Header/Header";
