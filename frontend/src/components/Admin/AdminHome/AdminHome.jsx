@@ -12,24 +12,26 @@ const AdminHome = () => {
 
   const sections = [
     { key: "dashboard", label: "Dashboard"},
+    { key: "profile", label: "Profile"},
+    { key: "calendar", label: "Calendar"},
     { key: "updates", label: "Updates"},
     { key: "aboutus", label: "About Us"},
-    { key: "calendar", label: "Calendar"},
-    { key: "profile", label: "Profile"}
+    
+    
   ];
 
   const renderSectionContent = () => {
     switch (activeSection) {
       case "dashboard":
         return <AdminDashboard />;
+      case "profile":
+        return <AdminProfile />;
+      case "calendar":
+        return <AdminCalender />;
       case "updates":
         return <AdminUpdates />;
       case "aboutus":
         return <AdminAboutUs />;
-      case "calendar":
-        return <AdminCalender />;
-      case "profile":
-        return <AdminProfile />;
       default:
         return <AdminDashboard />;
     }
