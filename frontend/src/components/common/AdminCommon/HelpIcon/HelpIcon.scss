@@ -1,0 +1,30 @@
+.admin-help-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: #60a5fa; /* Light blue color as shown in image */
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    background: #3b82f6;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:active {
+    transform: scale(1);
+  }
+  
+  &__question {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}

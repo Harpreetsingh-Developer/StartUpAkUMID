@@ -1,0 +1,121 @@
+
+.side-navbar {
+    height: 100%;
+    min-height: 0;
+    width: 6.2%;
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: var(--font-family);
+  }
+  
+  .side-navbar__top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 16px;
+  }
+  
+  .side-navbar__bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .side-navbar__option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    transition: 
+      transform 0.15s,
+      background 0.2s;
+    border-radius: 8px;
+    padding: 6px 0;
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+  }
+  
+  .side-navbar__option:active,
+  .side-navbar__option:focus,
+  .side-navbar__option:hover {
+    transform: scale(1.05);
+    background: rgba(64, 63, 100, 0.8); /* Darker version of secondary color */
+  }
+  
+  /* Default icon style as fallback */
+  .side-navbar__icon {
+    margin-bottom: 2px;
+  }
+  
+  /* Target each and every icon individually */
+  .side-navbar__icon--home {
+    height: 30px;
+    width: 42px;
+    min-height: 14px;
+    min-width: 14px;
+  }
+  
+  .side-navbar__icon--incubation {
+    height: 35px;
+    width: 45px;
+    min-height: 24px;
+    min-width: 24px;
+  }
+  
+  .side-navbar__icon--message {
+    height: 30px;
+    width: 70px;
+    min-height: 18px;
+    min-width: 18px;
+  }
+  
+  .side-navbar__icon--report {
+    height: 26px;
+    width: 70px;
+    min-height: 22px;
+    min-width: 22px;
+  }
+  
+  .side-navbar__icon--apps {
+    height: 32px;
+    width: 78px;
+    min-height: 20px;
+    min-width: 20px;
+  }
+  
+  .side-navbar__icon--website {
+    height: 30px;
+    width: 38px;
+    min-height: 18px;
+    min-width: 18px;
+  }
+  
+  .side-navbar__icon--settings {
+    height: 30px;
+    width: 35px;
+    min-height: 16px;
+    min-width: 16px;
+  }
+  
+  
+  .side-navbar__label {
+    font-weight: var(--font-weight-light);
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    margin-top: 2px;
+  }
+  
