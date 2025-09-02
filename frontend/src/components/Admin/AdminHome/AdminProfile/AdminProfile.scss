@@ -1,15 +1,652 @@
-.admin-profile {
-  width: 100%;
-  height: 100%;
+.profile-container {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fafc;
+  padding: 1rem;
+  position: relative;
+}
+
+.profile-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  
-  h1 {
-    font-size: 2rem;
-    color: #64748b;
-    font-weight: 600;
-    text-align: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+
+  .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .avatar-container {
+      cursor: pointer;
+    }
+
+    .avatar-placeholder {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #e6e9f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      .initials {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .contact-details {
+      h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+      .designation {
+        margin: 0.25rem 0;
+        font-weight: 500;
+        color: #444;
+      }
+      .contact-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 0.5rem;
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+          color: #777;
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+          svg {
+            width: 16px;
+            height: 16px;
+            color: #777;
+          }
+        }
+      }
+    }
   }
+
+  .profile-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem 2rem;
+    
+    div {
+      text-align: left;
+      strong {
+        display: block;
+        font-size: 0.8rem;
+        color: #666;
+      }
+      p {
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .profile-actions {
+    position: relative;
+
+    .active-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      svg {
+        width: 16px;
+        height: 16px;
+        color: #fff;
+      }
+    }
+
+    .actions-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      min-width: 150px;
+      margin-top: 0.5rem;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          padding: 0.75rem 1rem;
+          cursor: pointer;
+          &:hover {
+            background: #f1f1f1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.profile-tabs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+  .tab-button {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    background: #f1f1f1;
+    color: #444;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+    
+    &.active {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    &:hover {
+      background: #dbeafe;
+    }
+  }
+  
+  .active-tab-indicator-wrapper {
+    position: absolute;
+    bottom: -15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .active-tab-indicator {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #2563eb;
+    margin-bottom: -0.5rem;
+    position: absolute;
+    transition: left 0.3s ease;
+  }
+}
+
+.profile-body {
+  display: flex;
+  gap: 1rem;
+
+  .left-panel,
+  .right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-card,
+  .timeline-card,
+  .team-card,
+  .praise-card,
+  .goals-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    h4 {
+      margin-top: 1rem;
+      color: #2563eb;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .view-all, .give-praise {
+        text-decoration: none;
+        color: #2563eb;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+
+    .timeline-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        gap: 1rem;
+      }
+      .icon-wrapper {
+        background: #eef2ff;
+        border-radius: 50%;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        svg {
+          width: 24px;
+          height: 24px;
+          color: #2563eb;
+        }
+      }
+    }
+
+    .team-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      &.view-all-mode {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        
+        li {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .team-member-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #e6e9f2;
+        cursor: pointer;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .team-member-details {
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-weight: 600;
+          font-size: 1rem;
+        }
+        .role {
+          font-size: 0.8rem;
+          color: #777;
+        }
+      }
+    }
+
+    .praise-list {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .praise-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+        width: 100px;
+        padding: 0.5rem;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .praise-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #eef2ff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .praise-message {
+          font-size: 0.8rem;
+          color: #666;
+          padding: 0 0.5rem;
+        }
+      }
+    }
+    
+    .goals-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      
+      .goals-icon {
+        width: 40px;
+        height: 40px;
+        background: #eef2ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        svg {
+          width: 24px;
+          height: 24px;
+          color: #2563eb;
+        }
+      }
+      
+      .goals-details {
+        flex-grow: 1;
+        .goals-text {
+          margin: 0;
+          font-weight: 600;
+        }
+        .goals-status {
+          font-size: 0.8rem;
+          color: #22c55e;
+        }
+      }
+      
+      .goals-progress-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        
+        .goals-count {
+          font-weight: 600;
+        }
+        
+        .goals-percentage {
+          font-size: 0.8rem;
+          color: #22c55e;
+        }
+      }
+    }
+
+    .update-goals-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  }
+
+  .placeholder-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content, .modal-view-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  
+  h3 {
+    margin-top: 0;
+    color: #2563eb;
+  }
+  
+  label {
+    display: block;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 500;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    margin: 0.5rem 0;
+  }
+}
+
+.modal-view-content {
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+  }
+
+  .modal-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f9fafc;
+    border-radius: 8px;
+
+    h4 {
+      margin: 0 0 1rem 0;
+      color: #2563eb;
+    }
+
+    p {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+
+      strong {
+        flex: 0 0 40%;
+      }
+    }
+  }
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  
+  button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    
+    &.btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+    
+    &.btn-secondary {
+      background: #f1f1f1;
+      color: #333;
+    }
+  }
+}
+
+.deactivated-message {
+  text-align: center;
+  padding: 2rem;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    .profile-meta {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .profile-body {
+    flex-direction: column;
+  }
+  
+  .team-list.view-all-mode {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.praise-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.praise-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.praise-details {
+  flex-grow: 1;
 }
