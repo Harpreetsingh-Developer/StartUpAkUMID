@@ -1,331 +1,945 @@
-.subscription-plan-settings {
-  padding: 24px;
-  background: #f8f9fb;
+$primary-page-text-color: #1a202c;
+$secondary-page-text-color: #4a5568;
+$light-page-bg: #f7fafc;
+
+$card-bg-dark: #2d3748;
+$card-border-dark: #4a5568;
+$card-text-primary-dark: #e0e6ed;
+$card-text-secondary-dark: #a0aec0;
+
+$gray-card-bg: #e2e8f0;
+$gray-card-border: #cbd5e0;
+$gray-card-text-primary: #1a202c;
+$gray-card-text-secondary: #4a5568;
+
+$accent-color: #667eea;
+$accent-hover: #5a67d8;
+$recommended-badge-bg: #48bb78;
+$recommended-border-highlight: #48bb78;
+$current-button-bg-dark: #4a5568;
+$current-button-text-dark: #fff;
+$dark-button-bg: #1a202c;
+$dark-button-hover: #0d121c;
+
+$toggle-bg-light: #e2e8f0;
+$toggle-slider-bg-light: #fff;
+
+$modal-overlay-dark: rgba(0, 0, 0, 0.7);
+$modal-bg-dark: #2d3748;
+$modal-border-dark: #4a5568;
+$modal-text-dark: #e0e6ed;
+$modal-input-bg-dark: #1a202c;
+
+$faq-bg-dark: #252d3a;
+$faq-border-dark: #4a5568;
+$faq-question-bg-dark: #2d3748;
+
+$toast-bg-light: #e0e6ed;
+$toast-text-dark: #1a202c;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@mixin transition-ease {
+  transition: all 0.3s ease-in-out;
+}
+
+.pricing-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 4rem 1rem;
+  background-color: $light-page-bg;
+  color: $primary-page-text-color;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 32px;
-    gap: 24px;
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 16px;
+  .header-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .header-text-group {
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: $primary-page-text-color;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: $secondary-page-text-color;
+      line-height: 1.5;
     }
   }
 
-  &__title-section {
-    flex: 1;
+  .billing-section {
+    @include flex-center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .billing-toggle {
+      @include flex-center;
+      background-color: $toggle-bg-light;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      gap: 1rem;
+
+      span {
+        cursor: pointer;
+        font-weight: 600;
+        color: $secondary-page-text-color;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+        @include transition-ease;
+
+        &.active {
+          background-color: $card-bg-dark;
+          color: $card-text-primary-dark;
+        }
+      }
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      margin: 0 10px;
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $accent-color;
+      @include transition-ease;
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: $toggle-slider-bg-light;
+        @include transition-ease;
+      }
+    }
+
+    input:checked + .slider {
+      background-color: $accent-color;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .slider.round {
+      border-radius: 34px;
+
+      &:before {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.pricing-card {
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: left;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  @include card-shadow;
+  @include transition-ease;
+
+  &:hover {
+    transform: translateY(-5px);
   }
 
-  &__title {
-    color: #1976d2;
-    font-size: 28px;
+  &.enterprise {
+    background-color: $card-bg-dark;
+    border: 1px solid $card-border-dark;
+
+    .title, .price, .feature-text {
+      color: $card-text-primary-dark;
+    }
+
+    .period, .plan-description {
+      color: $card-text-secondary-dark;
+    }
+
+    .plan-button {
+      background-color: $card-border-dark;
+      color: $card-text-primary-dark;
+
+      &:hover:not([disabled]) {
+        background-color: $accent-hover;
+        color: white;
+      }
+    }
+
+    .uncheck-circle {
+      stroke: $accent-color;
+    }
+  }
+
+  &:not(.enterprise) {
+    background-color: $gray-card-bg;
+    border: 1px solid $gray-card-border;
+
+    .title, .price, .feature-text {
+      color: $gray-card-text-primary;
+    }
+
+    .period, .plan-description {
+      color: $gray-card-text-secondary;
+    }
+
+    .plan-button {
+      background-color: $dark-button-bg;
+      color: $card-text-primary-dark;
+
+      &:hover:not([disabled]) {
+        background-color: $dark-button-hover;
+      }
+    }
+
+    .uncheck-circle {
+      stroke: $accent-color;
+    }
+  }
+
+  &.recommended {
+    background: linear-gradient(135deg, $gray-card-bg, darken($gray-card-bg, 3%));
+    border-color: $recommended-border-highlight;
+    transform: scale(1.05);
+
+    .plan-button {
+      background-color: $recommended-badge-bg;
+      color: white;
+
+      &:hover {
+        background-color: darken($recommended-badge-bg, 10%);
+      }
+    }
+  }
+
+  &.current {
+    border-color: $accent-color;
+
+    .plan-button {
+      background-color: $current-button-bg-dark;
+      color: $current-button-text-dark;
+      cursor: not-allowed;
+    }
+  }
+
+  .recommended-badge {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background-color: $recommended-badge-bg;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .card-header {
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
     font-weight: 700;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
   }
 
-  &__subtitle {
-    color: #666;
-    font-size: 16px;
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.4;
+  .price-info {
+    @include flex-start;
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .period {
+      font-size: 1rem;
+      margin-left: 0.25rem;
+    }
   }
 
-  &__search {
-    flex-shrink: 0;
+  .plan-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
 
-  &__content {
-    margin-bottom: 32px;
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
   }
 
-  &__footer {
+  .feature-item {
+    @include flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    cursor: pointer;
+
+    .icon-container {
+      cursor: pointer;
+    }
+
+    .checkmark {
+      width: 24px;
+      height: 24px;
+      @include transition-ease;
+    }
+
+    .checkmark.checked {
+      fill: $recommended-badge-bg;
+    }
+
+    .uncheck-circle {
+      stroke: $accent-color;
+    }
+
+    .completion-badge {
+      background-color: #2f5647;
+      color: $recommended-badge-bg;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.5rem;
+      border-radius: 9999px;
+      margin-left: auto;
+    }
+
+    .feature-tooltip {
+      position: absolute;
+      background-color: #0d121c;
+      color: $card-text-primary-dark;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 10;
+      visibility: hidden;
+      opacity: 0;
+      @include transition-ease;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #0d121c transparent transparent transparent;
+      }
+    }
+
+    &.tooltip-active .feature-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .plan-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    @include transition-ease;
     display: flex;
     justify-content: center;
-    padding-top: 24px;
-  }
-}
+    align-items: center;
 
-.search-container {
-  position: relative;
-  width: 300px;
+    .button-arrow {
+      margin-left: 0.5rem;
+      @include transition-ease;
+    }
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-}
-
-.search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  opacity: 0.6;
-  z-index: 1;
-}
-
-.search-input {
-  width: 100%;
-  padding: 12px 12px 12px 40px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 14px;
-  background: #fff;
-  transition: all 0.2s ease;
-
-  &:focus {
-    outline: none;
-    border-color: #1976d2;
-    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
-  }
-
-  &::placeholder {
-    color: #999;
-  }
-}
-
-.plans-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  // Special layout for 4 cards: 3 in first row, 1 centered in second row
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
-    
-    .plan-card:last-child {
-      grid-column: 2;
-      justify-self: center;
-      max-width: 350px;
+    &:hover:not([disabled]) .button-arrow {
+      transform: translateX(5px);
     }
   }
 }
 
-.plan-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s ease;
-  position: relative;
+.trust-badges {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
 
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transform: translateY(-1px);
+  .badge {
+    @include flex-center;
+    gap: 0.5rem;
+    color: $secondary-page-text-color;
+    font-weight: 500;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      path {
+        stroke: $accent-color;
+      }
+    }
+  }
+}
+
+.action-buttons {
+  @include flex-center;
+  margin-bottom: 3rem;
+
+  .compare-button {
+    @include flex-center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid $card-border-dark;
+    background-color: $card-bg-dark;
+    color: $card-text-primary-dark;
+    font-weight: 600;
+    cursor: pointer;
+    @include transition-ease;
+
+    &:hover {
+      background-color: darken($card-bg-dark, 5%);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $card-text-primary-dark;
+    }
+  }
+}
+
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: left;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: $primary-page-text-color;
   }
 
-  &__header {
+  .faq-item {
+    background-color: $faq-bg-dark;
+    border: 1px solid $faq-border-dark;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    @include transition-ease;
+
+    &.active {
+      border-color: $accent-color;
+
+      .faq-question svg {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        max-height: 200px;
+        padding: 1rem;
+      }
+    }
+  }
+
+  .faq-question {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
-  }
-
-  &__title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-  }
-
-  &__description {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0 0 20px 0;
-  }
-
-  &__pricing {
-    display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  &__price {
-    font-size: 20px;
-    font-weight: 700;
-    color: #1976d2;
-  }
-
-  &__duration {
-    padding: 6px 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    background: #fff;
-    font-size: 14px;
-    color: #333;
+    padding: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    background-color: $faq-question-bg-dark;
+    color: $card-text-primary-dark;
 
-    &:focus {
-      outline: none;
-      border-color: #1976d2;
-      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+    svg {
+      width: 24px;
+      height: 24px;
+      color: $card-text-primary-dark;
+      @include transition-ease;
     }
   }
 
-  &__features {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    @include transition-ease;
+
+    p {
+      color: $card-text-secondary-dark;
+      line-height: 1.5;
+    }
+  }
+}
+
+.enterprise-confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  @include flex-center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  @include transition-ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
   }
 
-  &__feature {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 8px;
+  .modal-content {
+    background-color: $modal-bg-dark;
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    @include card-shadow;
+    transform: translateY(20px);
+    @include transition-ease;
     position: relative;
-    padding-left: 16px;
 
-    &:before {
-      content: "•";
+    .modal-close {
       position: absolute;
-      left: 0;
-      color: #1976d2;
-      font-weight: bold;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: $card-text-secondary-dark;
+      cursor: pointer;
+      @include transition-ease;
+
+      &:hover {
+        color: $card-text-primary-dark;
+      }
     }
 
-    &:last-child {
-      margin-bottom: 0;
+    .modal-icon {
+      margin-bottom: 1.5rem;
+
+      svg {
+        width: 60px;
+        height: 60px;
+        fill: $accent-color;
+      }
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: $card-text-primary-dark;
+    }
+
+    p {
+      color: $card-text-secondary-dark;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .enterprise-features {
+      text-align: left;
+      margin-bottom: 2rem;
+      background-color: lighten($modal-bg-dark, 5%);
+      border-radius: 8px;
+      padding: 1.5rem;
+
+      h4 {
+        font-size: 1.2rem;
+        color: $card-text-primary-dark;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          @include flex-start;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+          color: $card-text-secondary-dark;
+
+          svg {
+            width: 20px;
+            height: 20px;
+            fill: $recommended-badge-bg;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+
+    .modal-buttons {
+      @include flex-center;
+      gap: 1rem;
+
+      button {
+        padding: 0.875rem 1.75rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        @include transition-ease;
+
+        &.confirm-button {
+          background-color: $recommended-badge-bg;
+          color: white;
+
+          &:hover {
+            background-color: darken($recommended-badge-bg, 10%);
+          }
+        }
+
+        &.cancel-button {
+          background-color: transparent;
+          color: $card-text-secondary-dark;
+          border: 1px solid $card-border-dark;
+
+          &:hover {
+            background-color: $card-border-dark;
+            color: $card-text-primary-dark;
+          }
+        }
+      }
     }
   }
-}
 
-.edit-button {
-  background: transparent;
-  color: #1976d2;
-  border: 1px solid #1976d2;
-  padding: 6px 16px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #1976d2;
-    color: white;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
-  }
-}
-
-.create-plan-button {
-  background: #1976d2;
-  color: white;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: #1565c0;
-    transform: scale(1.05);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3);
-  }
-}
-
-.create-plan-icon {
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.save-plan-button {
-  background: #1976d2;
-  color: white;
-  border: none;
-  padding: 12px 48px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 140px;
-
-  &:hover {
-    background: #1565c0;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
-  }
-
-  &:active {
+  &.active .modal-content {
     transform: translateY(0);
   }
+}
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3);
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $modal-overlay-dark;
+  @include flex-center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: $modal-bg-dark;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  @include card-shadow;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $modal-text-dark;
+  }
+
+  p {
+    color: $card-text-secondary-dark;
+    margin-bottom: 2rem;
+  }
+
+  &.compare-modal {
+    max-width: 90%;
+    padding: 1rem;
   }
 }
 
-// Responsive adjustments
-@media (max-width: 1024px) {
-  .plans-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+.feature-modal {
+  background-color: $modal-bg-dark;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  @include card-shadow;
+  overflow: hidden;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid $modal-border-dark;
+
+    h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: $modal-text-dark;
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $card-text-secondary-dark;
+    }
+  }
+
+  .modal-body {
+    padding: 1rem;
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid $modal-border-dark;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      background-color: $modal-input-bg-dark;
+      color: $modal-text-dark;
+
+      &:focus {
+        outline: none;
+        border-color: $accent-color;
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid $modal-border-dark;
   }
 }
 
-@media (max-width: 480px) {
-  .subscription-plan-settings {
-    padding: 16px;
+.modal-buttons {
+  @include flex-center;
+  gap: 1rem;
 
-    &__title {
-      font-size: 24px;
+  button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    @include transition-ease;
+
+    &.confirm-button {
+      background-color: $accent-color;
+      color: white;
+
+      &:hover {
+        background-color: darken($accent-color, 10%);
+      }
     }
 
-    &__subtitle {
-      font-size: 14px;
+    &.cancel-button {
+      background-color: $current-button-bg-dark;
+      color: $current-button-text-dark;
+
+      &:hover {
+        background-color: lighten($current-button-bg-dark, 10%);
+      }
+    }
+  }
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: $modal-bg-dark;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  @include card-shadow;
+
+  th, td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid $modal-border-dark;
+  }
+
+  th {
+    background-color: darken($modal-bg-dark, 5%);
+    font-weight: 600;
+    color: $modal-text-dark;
+    position: relative;
+
+    &.recommended {
+      background: linear-gradient(to bottom, $recommended-badge-bg, darken($recommended-badge-bg, 10%));
+      color: white;
+
+      .recommended-label {
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        background: $accent-color;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
     }
   }
 
-  .plan-card {
-    padding: 20px;
+  tbody tr:nth-child(even) {
+    background-color: lighten($modal-bg-dark, 5%);
+  }
 
-    &__title {
-      font-size: 16px;
-    }
+  tbody tr:hover {
+    background-color: lighten($modal-bg-dark, 10%);
+  }
 
-    &__description {
-      font-size: 13px;
-    }
+  td {
+    color: $card-text-secondary-dark;
 
-    &__price {
-      font-size: 18px;
+    &:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: $modal-text-dark;
     }
   }
 
-  .save-plan-button {
-    padding: 10px 32px;
-    font-size: 14px;
+  .feature-check {
+    color: $recommended-badge-bg;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .feature-missing {
+    color: #e53e3e;
+    font-weight: bold;
+  }
+}
+
+.toast-message {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $toast-bg-light;
+  color: $toast-text-dark;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  z-index: 1000;
+  @include card-shadow;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from { bottom: 0; opacity: 0; }
+  to { bottom: 2rem; opacity: 1; }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .header-text-group {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .billing-section {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .pricing-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricing-card.recommended {
+    transform: scale(1.02);
+  }
+
+  .enterprise-confirm-modal {
+    .modal-content {
+      padding: 1.5rem;
+
+      .modal-buttons {
+        flex-direction: column;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .compare-table {
+    font-size: 0.8rem;
+
+    th, td {
+      padding: 0.5rem;
+    }
   }
 }
