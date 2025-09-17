@@ -9,3 +9,4 @@ export { default as AdminIntegrationButton } from './IntegrationButton/Integrati
 export { default as AdminHelpIcon } from './HelpIcon/HelpIcon';
 export { default as AdminUserAvatar } from './UserAvatar/UserAvatar';
 export { default as AdminAnnouncement } from './Annoucement/Announcement';
+export { default as CustomPopup } from './CustomPopup/CustomPopup';

@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary-page-text-color: #1a202c;
 $secondary-page-text-color: #4a5568;
 $light-page-bg: #f7fafc;
@@ -250,7 +252,7 @@ $toast-text-dark: #1a202c;
   }
 
   &.recommended {
-    background: linear-gradient(135deg, $gray-card-bg, darken($gray-card-bg, 3%));
+    background: linear-gradient(135deg, $gray-card-bg, color.adjust($gray-card-bg, $lightness: -3%));
     border-color: $recommended-border-highlight;
     transform: scale(1.05);
 
@@ -259,7 +261,7 @@ $toast-text-dark: #1a202c;
       color: white;
 
       &:hover {
-        background-color: darken($recommended-badge-bg, 10%);
+        background-color: color.adjust($recommended-badge-bg, $lightness: -10%);
       }
     }
   }
@@ -452,7 +454,7 @@ $toast-text-dark: #1a202c;
     @include transition-ease;
 
     &:hover {
-      background-color: darken($card-bg-dark, 5%);
+      background-color: color.adjust($card-bg-dark, $lightness: -5%);
     }
 
     svg {
@@ -602,7 +604,7 @@ $toast-text-dark: #1a202c;
     .enterprise-features {
       text-align: left;
       margin-bottom: 2rem;
-      background-color: lighten($modal-bg-dark, 5%);
+      background-color: color.adjust($modal-bg-dark, $lightness: 5%);
       border-radius: 8px;
       padding: 1.5rem;
 
@@ -651,7 +653,7 @@ $toast-text-dark: #1a202c;
           color: white;
 
           &:hover {
-            background-color: darken($recommended-badge-bg, 10%);
+            background-color: color.adjust($recommended-badge-bg, $lightness: -10%);
           }
         }
 

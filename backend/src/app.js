@@ -40,6 +40,8 @@ app.use(cookieParser())
 import userRouter from './routes/user.routes.js'
 import authRouter from './routes/auth.routes.js'
 import onboardingRouter from './routes/onboarding.route.js'
+import updateRouter from './routes/update.routes.js'
+import pollRouter from './routes/poll.routes.js' // Import the new poll routes
 
 // routes decleration 
 // since things are seperated we use app.use to use middleware
@@ -47,5 +49,7 @@ import onboardingRouter from './routes/onboarding.route.js'
 app.use("/api", onboardingRouter)
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/auth", authRouter)
+app.use("/api/v1/updates", updateRouter)
+app.use("/api/v1/polls", pollRouter) // Use the new poll routes
 
 export { app }
