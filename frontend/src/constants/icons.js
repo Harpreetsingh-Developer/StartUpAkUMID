@@ -33,6 +33,8 @@ import Poll from '../assets/icons/poll.png';
 import Post from '../assets/icons/post.png';
 import Image from '../assets/icons/image.png';
 import Emoji from '../assets/icons/Emoji.png';
+import AboutMe1 from '../assets/icons/AboutMe1.png';
+import AboutMe2 from '../assets/icons/AboutMe2.png';
 
 // SettingsIcons
 import SuperAdminIcon from '../assets/icons/SettingsIcons/SuperAdminIcon.png';
@@ -79,6 +81,8 @@ const icons = {
   Look360Icon,
   MailMyBoostIcon,
   TeamIcon,
+  AboutMe1,
+  AboutMe2,
   // SettingsIcons
   SuperAdminIcon,
   AdminIcon,

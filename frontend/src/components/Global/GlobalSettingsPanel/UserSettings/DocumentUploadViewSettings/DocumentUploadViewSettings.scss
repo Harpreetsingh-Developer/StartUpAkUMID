@@ -1,4 +1,50 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@use "sass:color";
+
+$primary-page-text-color: #1a202c;
+$secondary-page-text-color: #4a5568;
+$light-page-bg: #f7fafc;
+
+$card-bg-dark: #2d3748;
+$card-border-dark: #4a5568;
+$card-text-primary-dark: #e0e6ed;
+$card-text-secondary-dark: #a0aec0;
+
+$gray-card-bg: #e2e8f0;
+$gray-card-border: #cbd5e0;
+$gray-card-text-primary: #1a202c;
+$gray-card-text-secondary: #4a5568;
+
+$accent-color: #667eea;
+$accent-hover: #5a67d8;
+$recommended-badge-bg: #48bb78;
+$recommended-border-highlight: #48bb78;
+$current-button-bg-dark: #4a5568;
+$current-button-text-dark: #fff;
+$dark-button-bg: #1a202c;
+$dark-button-hover: #0d121c;
+
+$toggle-bg-light: #e2e8f0;
+$toggle-slider-bg-light: #fff;
+
+$modal-overlay-dark: rgba(0, 0, 0, 0.7);
+$modal-bg-dark: #2d3748;
+$modal-border-dark: #4a5568;
+$modal-text-dark: #e0e6ed;
+$modal-input-bg-dark: #1a202c;
+
+$faq-bg-dark: #252d3a;
+$faq-border-dark: #4a5568;
+$faq-question-bg-dark: #2d3748;
+
+$toast-bg-light: #e0e6ed;
+$toast-text-dark: #1a202c;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .dashboard-container {
   padding: 20px 40px;
@@ -182,6 +228,15 @@
       color: #555;
     }
   }
+
+  &.enterprise {
+    background-color: $card-bg-dark;
+    border: 1px solid $card-border-dark;
+
+    .title, .price, .feature-text {
+      color: $card-text-primary-dark;
+    }
+  }
 }
 
 .file-table {
@@ -192,6 +247,23 @@
     background-color: #f8f9fa;
     color: #6c757d;
     font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  .recommended-badge {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    background-color: $recommended-badge-bg;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
     padding: 12px 15px;
@@ -261,42 +333,30 @@
       color: white;
       border-color: #007bff;
     }
+
+    &:hover {
+      background-color: darken($card-bg-dark, 5%);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $card-text-primary-dark;
+    }
   }
 }
 
-.export-document-btn {
-  margin-top: 20px;
-  padding: 12px 24px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  float: right;
-}
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: left;
 
-.upload-document-panel {
-  width: 380px;
-  min-width: 380px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  }
-
-  .action-icon-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem 0.4rem;
-    font-size: 1.15rem;
-    color: #222;
-    transition: color 0.2s;
-  }
-  .action-icon-btn:focus {
-    outline: 2px solid #007bff;
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: $primary-page-text-color;
   }
 
   .action-icon-btn .fa-star,
@@ -316,7 +376,7 @@
   .action-icon-btn:hover .fa-star {
     color: #ffb300 !important;
   }
-
+}
 
 .panel-header {
   display: flex;
@@ -403,6 +463,58 @@
   }
 }
 
+.export-document-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  float: right;
+}
+
+.upload-document-panel {
+  width: 380px;
+  min-width: 380px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+
+  .action-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    font-size: 1.15rem;
+    color: #222;
+    transition: color 0.2s;
+  }
+  .action-icon-btn:focus {
+    outline: 2px solid #007bff;
+  }
+
+  .action-icon-btn .fa-star,
+  .action-icon-btn .fa-star-o {
+    color: #bdbdbd !important;
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 900 !important;
+    transition: color 0.2s;
+    display: inline-block !important;
+  }
+  .action-icon-btn .fa-star {
+    color: #FFD700 !important;
+  }
+  .action-icon-btn:hover .fa-star-o {
+    color: #FFD700 !important;
+  }
+  .action-icon-btn:hover .fa-star {
+    color: #ffb300 !important;
+  }
+}
 .panel-footer {
   display: flex;
   justify-content: flex-end;
