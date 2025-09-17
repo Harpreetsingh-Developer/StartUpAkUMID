@@ -1,180 +1,212 @@
 import React, { useState, useEffect } from 'react';
 import './DashboardYourPost.scss';
 import icons from '../../../../constants/icons';
+import updateService from '../../../../services/updateService';
 
-// --- Time Formatting Utility ---
-const formatTimeAgo = (date) => {
-  const seconds = Math.floor((new Date() - date) / 1000);
-  let interval = seconds / 31536000;
-  if (interval > 1) return Math.floor(interval) + " years ago";
-  interval = seconds / 2592000;
-  if (interval > 1) return Math.floor(interval) + " months ago";
-  interval = seconds / 86400;
-  if (interval > 1) return Math.floor(interval) + " days ago";
-  interval = seconds / 3600;
-  if (interval > 1) return Math.floor(interval) + " hours ago";
-  interval = seconds / 60;
-  if (interval > 1) return Math.floor(interval) + " minutes ago";
-  return "just now";
-};
-
-// --- Dummy Data for Posts ---
-const dummyPosts = [
-  {
-    id: 1,
-    author: 'KPB Supports Solutions',
-    avatar: icons.CompanyLogo,
-    timestamp: new Date(new Date().getTime() - 19 * 60 * 60 * 1000),
-    text: "We are Launching Soon!!!",
-    image: 'https://placehold.co/600x300/2d3748/ffffff?text=KPB+Supports+Solutions'
-  },
-  {
-    id: 2,
-    author: 'KPB Supports Solutions',
-    avatar: icons.CompanyLogo,
-    timestamp: new Date(new Date().getTime() - 2 * 24 * 60 * 60 * 1000),
-    text: 'Just finished a great session on project management. Collaboration is key!',
-    image: null
-  },
-  
-];
-
-// --- Delete Confirmation Modal Component ---
-const DeleteConfirmationModal = ({ onConfirm, onCancel }) => {
-  return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <h4>Are you sure?</h4>
-        <p>Do you really want to delete this post? This process cannot be undone.</p>
-        <div className="modal-actions">
-          <button className="modal-btn cancel-btn" onClick={onCancel}>No</button>
-          <button className="modal-btn confirm-btn" onClick={onConfirm}>Yes</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// --- Single Post Item Component ---
-const PostItem = ({ post, onUpdatePost, onDeletePost }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedText, setEditedText] = useState(post.text);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [timeAgo, setTimeAgo] = useState(formatTimeAgo(post.timestamp));
+const DashboardYourPost = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [editingPost, setEditingPost] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editContent, setEditContent] = useState('');
+  const [editImage, setEditImage] = useState('');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeAgo(formatTimeAgo(post.timestamp));
-    }, 60000);
-    return () => clearInterval(interval);
-  }, [post.timestamp]);
+    fetchPosts();
+    // Make refreshPosts available globally
+    window.refreshPosts = fetchPosts;
+  }, []);
 
-  const handleEdit = () => {
-    setIsEditing(true);
-    setIsMenuOpen(false);
+  const fetchPosts = async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem('accessToken');
+      if (!token) return;
+
+      // Fetch posts by the current user (GlobalAdmin)
+      const response = await updateService.getAllUpdates();
+      if (response.success) {
+        // Filter posts by author (you can enhance this with user context)
+        const userPosts = response.data.updates.filter(post => 
+          post.author === 'GlobalAdmin' || post.author === 'Global Admin'
+        );
+        setPosts(userPosts);
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEdit = (post) => {
+    setEditingPost(post._id);
+    setEditTitle(post.title);
+    setEditContent(post.content);
+    setEditImage(post.imageUrl || '');
   };
 
   const handleCancelEdit = () => {
-    setIsEditing(false);
-    setEditedText(post.text);
+    setEditingPost(null);
+    setEditTitle('');
+    setEditContent('');
+    setEditImage('');
   };
 
-  const handleSave = () => {
-    onUpdatePost(post.id, editedText);
-    setIsEditing(false);
+  const handleSaveEdit = async () => {
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) return;
+
+      const updateData = {
+        title: editTitle.trim(),
+        content: editContent.trim(),
+        imageUrl: editImage
+      };
+
+      const response = await updateService.updateUpdate(editingPost, updateData, token);
+      if (response.success) {
+        alert('Post updated successfully!');
+        handleCancelEdit();
+        fetchPosts(); // Refresh the list
+      } else {
+        alert('Failed to update post: ' + response.message);
+      }
+    } catch (error) {
+      console.error('Error updating post:', error);
+      alert('Failed to update post. Please try again.');
+    }
   };
 
-  const handleDelete = () => {
-    onDeletePost(post.id);
-    setIsDeleteModalOpen(false);
+  const handleDelete = async (postId) => {
+    if (!window.confirm('Are you sure you want to delete this post?')) {
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('accessToken');
+      if (!token) return;
+
+      const response = await updateService.deleteUpdate(postId, token);
+      if (response.success) {
+        alert('Post deleted successfully!');
+        fetchPosts(); // Refresh the list
+      } else {
+        alert('Failed to delete post: ' + response.message);
+      }
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert('Failed to delete post. Please try again.');
+    }
   };
 
-  return (
-    <>
-      <div className="post-item-card">
-        <div className="post-item-header">
-          <div className="author-details">
-            <img src={post.avatar} alt={post.author} className="author-avatar" />
-            <div className="author-info">
-              <span className="author-name">
-                {post.author}
-              </span>
-              <span className="post-timestamp">{timeAgo}</span>
-            </div>
-          </div>
-          <div className="post-menu-container">
-            <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              &#x22EE;
-            </button>
-            {isMenuOpen && (
-              <div className="post-menu-dropdown">
-                <button onClick={handleEdit}>Edit</button>
-                <button onClick={() => { setIsDeleteModalOpen(true); setIsMenuOpen(false); }}>Delete</button>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="post-item-body">
-          {isEditing ? (
-            <div className="edit-mode-container">
-              <textarea
-                className="edit-textarea"
-                value={editedText}
-                onChange={(e) => setEditedText(e.target.value)}
-              />
-              <div className="edit-actions">
-                <button className="edit-action-btn cancel" onClick={handleCancelEdit}>Cancel</button>
-                <button className="edit-action-btn save" onClick={handleSave}>Save</button>
-              </div>
-            </div>
-          ) : (
-            <>
-              <p className="post-text">{post.text}</p>
-              {post.image && <img src={post.image} alt="Post content" className="post-image" />}
-            </>
-          )}
-        </div>
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { 
+      year: 'numeric', 
+      month: 'short', 
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    return date.toLocaleDateString('en-US', options);
+  };
+
+  if (loading) {
+    return (
+      <div className="your-posts-card">
+        <h3>Your Posts</h3>
+        <div className="loading">Loading your posts...</div>
       </div>
-      {isDeleteModalOpen && (
-        <DeleteConfirmationModal
-          onConfirm={handleDelete}
-          onCancel={() => setIsDeleteModalOpen(false)}
-        />
-      )}
-    </>
-  );
-};
-
-// --- Main Your Posts Component ---
-const DashboardYourPost = () => {
-  const [posts, setPosts] = useState(dummyPosts);
-
-  const handleUpdatePost = (postId, newText) => {
-    const updatedPosts = posts.map(post =>
-      post.id === postId ? { ...post, text: newText } : post
     );
-    setPosts(updatedPosts);
-  };
-
-  const handleDeletePost = (postId) => {
-    const updatedPosts = posts.filter(post => post.id !== postId);
-    setPosts(updatedPosts);
-  };
+  }
 
   return (
-    <div className="your-posts-container">
-      <h3 className="your-posts-title">YOUR POSTS</h3>
-      <div className="posts-list">
-        {posts.map(post => (
-          <PostItem 
-            key={post.id} 
-            post={post} 
-            onUpdatePost={handleUpdatePost}
-            onDeletePost={handleDeletePost}
-          />
-        ))}
-      </div>
+    <div className="your-posts-card">
+      <h3>Your Posts</h3>
+      
+      {posts.length === 0 ? (
+        <div className="no-posts">
+          <p>You haven't created any posts yet.</p>
+          <p>Use the "Post Update" section to create your first post!</p>
+        </div>
+      ) : (
+        <div className="posts-list">
+          {posts.map((post) => (
+            <div key={post._id} className="post-item">
+              {editingPost === post._id ? (
+                // Edit Mode
+                <div className="edit-mode">
+                  <input
+                    type="text"
+                    className="edit-title-input"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                    placeholder="Post title"
+                  />
+                  <textarea
+                    className="edit-content-input"
+                    value={editContent}
+                    onChange={(e) => setEditContent(e.target.value)}
+                    placeholder="Post content"
+                  />
+                  <input
+                    type="text"
+                    className="edit-image-input"
+                    value={editImage}
+                    onChange={(e) => setEditImage(e.target.value)}
+                    placeholder="Image URL (optional)"
+                  />
+                  <div className="edit-actions">
+                    <button className="save-btn" onClick={handleSaveEdit}>
+                      Save
+                    </button>
+                    <button className="cancel-btn" onClick={handleCancelEdit}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                // View Mode
+                <div className="view-mode">
+                  <div className="post-header">
+                    <h4 className="post-title">{post.title}</h4>
+                    <span className="post-date">{formatDate(post.date)}</span>
+                  </div>
+                  
+                  <div className="post-content">
+                    <p>{post.content}</p>
+                    {post.imageUrl && (
+                      <img 
+                        src={post.imageUrl} 
+                        alt="Post image" 
+                        className="post-image"
+                      />
+                    )}
+                  </div>
+                  
+                  <div className="post-actions">
+                    <button 
+                      className="action-btn edit"
+                      onClick={() => handleEdit(post)}
+                    >
+                      <img src={icons.SettingsIcon} alt="Edit" />
+                      Edit
+                    </button>
+                    <button 
+                      className="action-btn delete"
+                      onClick={() => handleDelete(post._id)}
+                    >
+                      <img src={icons.Image} alt="Delete" />
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

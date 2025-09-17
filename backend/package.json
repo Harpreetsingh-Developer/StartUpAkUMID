@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "seed": "node src/scripts/seedUsers.js"
+    "seed": "node src/scripts/seedUsers.js",
+    "seed:updates": "node src/scripts/seedUpdates.js"
   },
   "author": "",
   "license": "ISC",

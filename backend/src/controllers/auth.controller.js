@@ -95,9 +95,11 @@ const globalLogin = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
+    const isProduction = process.env.NODE_ENV === 'production'
     const options = {
         httpOnly: true,
-        secure: true
+        secure: isProduction,
+        sameSite: isProduction ? 'none' : 'lax'
     }
 
     return res
@@ -148,9 +150,11 @@ const superLogin = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
+    const isProduction = process.env.NODE_ENV === 'production'
     const options = {
         httpOnly: true,
-        secure: true
+        secure: isProduction,
+        sameSite: isProduction ? 'none' : 'lax'
     }
 
     return res
@@ -201,9 +205,11 @@ const adminLogin = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
+    const isProduction = process.env.NODE_ENV === 'production'
     const options = {
         httpOnly: true,
-        secure: true
+        secure: isProduction,
+        sameSite: isProduction ? 'none' : 'lax'
     }
 
     return res

@@ -49,16 +49,16 @@
       color: #6b7280;
       min-height: 80px;
       font-family: inherit;
-  
+
       &::placeholder {
         color: #9ca3af;
       }
-  
+
       &:focus {
         outline: none;
       }
     }
-  
+
     .image-preview-container {
       position: relative;
       margin-top: 1rem;
@@ -69,7 +69,7 @@
         object-fit: cover;
         border-radius: 0.5rem;
       }
-  
+
       .remove-image-btn {
         position: absolute;
         top: 0.5rem;
@@ -89,12 +89,12 @@
         line-height: 1;
       }
     }
-  
+
     .poll-form {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-  
+
       .poll-question-input,
       .poll-option-input {
         width: 100%;
@@ -103,7 +103,7 @@
         padding: 0.75rem 1rem;
         font-size: 1rem;
         font-family: inherit;
-  
+
         &::placeholder {
           color: #9ca3af;
         }
@@ -112,7 +112,7 @@
           border-color: #2563eb;
         }
       }
-  
+
       .add-option-btn {
         background: none;
         border: none;
@@ -125,18 +125,19 @@
       }
     }
   }
-  
+
   .create-post-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
   }
-  
+
   .footer-actions-left {
     display: flex;
     gap: 0.75rem;
-  
+    position: relative;
+
     .action-icon-btn {
       width: 36px;
       height: 36px;
@@ -149,15 +150,31 @@
       font-size: 1.25rem;
       color: #ffffff;
       padding: 0;
-  
+      transition: all 0.2s ease;
+
       &.mention {
         background-color: #3b82f6;
+        
+        &:hover {
+          background-color: #2563eb;
+          transform: scale(1.05);
+        }
       }
       &.media {
         background-color: #ef4444;
+        
+        &:hover {
+          background-color: #dc2626;
+          transform: scale(1.05);
+        }
       }
       &.emoji {
         background-color: #facc15;
+        
+        &:hover {
+          background-color: #eab308;
+          transform: scale(1.05);
+        }
       }
       
       img {
@@ -165,12 +182,43 @@
           height: 20px;
       }
     }
+
+    .emoji-picker {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      z-index: 1000;
+      min-width: 200px;
+
+      .emoji-option {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #f3f4f6;
+          transform: scale(1.1);
+        }
+      }
+    }
   }
-  
+
   .footer-actions-right {
     display: flex;
     gap: 1rem;
-  
+
     .action-btn {
       border: none;
       border-radius: 0.5rem;
@@ -178,12 +226,12 @@
       font-size: 0.875rem;
       font-weight: 600;
       cursor: pointer;
-  
+
       &.cancel {
         background-color: #ef4444;
         color: #ffffff;
       }
-  
+
       &.post {
         background-color: #3b82f6;
         color: #ffffff;

@@ -9,5 +9,11 @@ export default defineConfig({
     }
   },
   plugins: [react()],
-  
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "sass:color";`
+      }
+    }
+  }
 })
